@@ -8,9 +8,10 @@ services:
     environment:
       EULA: "TRUE"
       MEMORY: 2G
+      VERSION: 1.18.2
+      DIFFICULTY: normal
     volumes:
       - ./data:/data
-      - /etc/timezone:/etc/timezone:ro
     tty: true
     stdin_open: true
     restart: always
@@ -18,8 +19,7 @@ services:
       resources:
         limits:
           memory: 2.5G
-
-
+ 
   backup:
     image: itzg/mc-backup
     depends_on:
@@ -27,5 +27,4 @@ services:
     volumes:
       - ./data:/data:ro
       - ./mc-backups:/backups
-      - /etc/timezone:/etc/timezone:ro
     network_mode: "service:mc-vanilla"
